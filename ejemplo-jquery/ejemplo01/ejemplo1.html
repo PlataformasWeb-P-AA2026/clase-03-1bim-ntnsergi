@@ -10,13 +10,13 @@
       <h1>Ejemplo de Uso de Jquery Demo</h1>
       <h3 id="nombreCarrera">Tecnologías de la Información</h3>
       <h3 id="nombreUniversidad">Universidad Técnica Particular de Loja</h3>
-      <button type="submit">Generar Mensaje</button>
+      <button id="boton" type="submit">Generar Mensaje</button>
       <p id="mensajeFinal">
       </p>
   </body>
   <script>
     $(document).ready(function() {
-      $( "button" ).click(function() {
+      $( "#boton" ).click(function() {
         var texto1 = $('#nombreCarrera').text();
         var texto2 = $('#nombreUniversidad').text();
         $('#mensajeFinal').text("Su carrera es: "+ texto1 + ". Su universidad es: "

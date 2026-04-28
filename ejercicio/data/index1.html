@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Demo Jquery</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  </head>
+  <body>
+      <h1>Ejemplo de Uso de Jquery</h1>
+      
+      <div id="mensajeFinal">
+      </div>
+      
+      <button type="submit" id="obtenerInformacion">Obtener información</button>
+      <button type="submit" id="limpiarInformacion">Limpiar información</button>
+  </body>
+  <script>
+    $(document).ready(function() {
+      // Corregido: Barras normales para la ruta web
+      var url = "data_instituciones.json"; 
+      
+      $( "#obtenerInformacion" ).click(function() {
+            $.ajax({
+              dataType: 'json',
+              url: url 
+            }).then(function(data) {
+              for(var i=0; i<data.length; i++){
+                console.log(data[i]);
+                console.log(data[i].AMIE);
+                console.log(data[i]['Nombre-Educativa']); 
+                console.log(data[i].Provincia);
+                console.log(data[i].Canton);
+                console.log(data[i].Parroquia);
+                console.log(data[i].ZonaAdministrativa);
+                console.log(data[i].CodigoDistrito);
+                console.log(data[i].Sostenimiento);
+                console.log(data[i].RegimenEscolar);
+                console.log(data[i].Modalidad);
+                console.log(data[i].Jornada);
+                console.log(data[i].Nivel);
+                console.log(data[i].Etnia);
+                console.log(data[i].Numeroestudiantes);
+                console.log(data[i].Numerodocentes);
+                console.log(data[i].Estado);
+                
+                $('#mensajeFinal').append("<p><b>AMIE:</b> " + data[i].AMIE + " <b>Nombre Educativa:</b> "
+                     + data[i]['Nombre-Educativa'] + " <b>Provincia:</b> " + data[i].Provincia + " <b>Canton:</b> "
+                      + data[i].Canton + " <b>Parroquia:</b> " + data[i].Parroquia + " <b>Zona Admin:</b> "
+                       + data[i].ZonaAdministrativa + " <b>Distrito:</b> " + data[i].CodigoDistrito + 
+                       " <b>Sostenimiento:</b> " + data[i].Sostenimiento + " <b>Régimen:</b> " + data[i].RegimenEscolar + 
+                       " <b>Modalidad:</b> " + data[i].Modalidad + " <b>Jornada:</b> " + data[i].Jornada + " <b>Nivel:</b> "
+                        + data[i].Nivel + " <b>Etnia:</b> " + data[i].Etnia + " <b>Estudiantes:</b> "
+                         + data[i].Numeroestudiantes + " <b>Docentes:</b> " + data[i].Numerodocentes + 
+                         " <b>Estado:</b> " + data[i].Estado + "</p><hr>");
+              }
+            });      
+      });
+      
+      $( "#limpiarInformacion" ).click(function() {
+          $('#mensajeFinal').empty();
+      });
+    });
+  </script>
+</html>
